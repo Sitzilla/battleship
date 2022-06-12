@@ -1,26 +1,29 @@
 package model;
 
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 public class Board {
 
-    public static int WIDTH = 10;
-    public static int HEIGHT = 10;
+    public static final int WIDTH = 10;
+    public static final int HEIGHT = 10;
 
-    Coordinate[][] grid;
+    private Coordinate[][] grid;
 
     public Board() {
         grid = new Coordinate[WIDTH][HEIGHT];
 
         for (int i = 0; i < WIDTH; i++) {
             for (int j = 0; j < HEIGHT; j++) {
-                grid[i][j] = new Coordinate(i, j, Coordinate.State.EMPTY);
+                grid[i][j] = new Coordinate(new Point(i, j), Coordinate.State.EMPTY, null);
             }
         }
     }
 
     public void prettyPrint() {
+        System.out.println();
 
         System.out.printf("%2c ", ' ');
         System.out.printf("%2c ", 'A');
@@ -40,14 +43,25 @@ public class Board {
             System.out.printf("%2d ", i + 1);
             for (int j = 0; j < HEIGHT; j++) {
                 if (grid[i][j].getState() == Coordinate.State.OCCUPIED) {
-                    System.out.printf("%2d ", 1);
+                    System.out.printf("%2c ", 'O');
                 } else if (grid[i][j].getState() == Coordinate.State.EMPTY) {
-                    System.out.printf("%2d ", 0);
+                    System.out.printf("%2c ", ' ');
+                } else if (grid[i][j].getState() == Coordinate.State.HIT) {
+                    System.out.printf("%2c ", 'X');
+                } else if (grid[i][j].getState() == Coordinate.State.MISS) {
+                    System.out.printf("%2c ", '-');
                 }
             }
 
             System.out.println();
         }
 
+        System.out.println();
+        System.out.println("'0' represents a ship that has not been hit");
+        System.out.println("'X' represents a ship that has been hit");
+        System.out.println("'-' represents a spot that has been attacked that doesn't contain a ship");
+        System.out.println("blank represents a spot that hasn't been attacked yet");
+        System.out.println();
+        System.out.println();
     }
 }
