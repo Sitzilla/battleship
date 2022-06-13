@@ -1,4 +1,4 @@
-package com.evansitzes;
+package com.evansitzes.logic;
 
 import com.evansitzes.exception.TranslationException;
 import com.evansitzes.model.Board;

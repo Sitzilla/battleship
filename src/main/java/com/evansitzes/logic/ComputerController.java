@@ -1,4 +1,4 @@
-package com.evansitzes;
+package com.evansitzes.logic;
 
 import com.evansitzes.model.Board;
 import com.evansitzes.model.Coordinate;
@@ -13,6 +13,13 @@ public class ComputerController {
 
     private Deque<Point> moves = new ArrayDeque<>();
 
+    /**
+     * Builds a random list of ordered possible moves for the computer. Does this by
+     * - find all points on the board
+     * - randomize them
+     * - add them to a queue
+     * @param playerBoard the player's board
+     */
     public ComputerController(final Board playerBoard) {
         final List<Point> possibleMoves = new ArrayList<>();
 
@@ -27,6 +34,13 @@ public class ComputerController {
         moves.addAll(possibleMoves);
     }
 
+    /**
+     * Execute the computer's next attack.  All the computer's moves are queued up at the beginning of the game randomly,
+     * so to execute the attack we just dequeue the top item and check if it is a hit or miss, then update the player's
+     * board/ships respectively.
+     * @param playerBoard the player's board
+     * @param playerShips the player's ships.
+     */
     public void processComputerAttack(final Board playerBoard, final Map<ShipType, Ship> playerShips) {
         final Point nextMove = moves.pop();
 

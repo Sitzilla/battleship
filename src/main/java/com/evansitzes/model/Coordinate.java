@@ -8,7 +8,6 @@ import com.evansitzes.model.Ship.ShipType;
 @AllArgsConstructor
 public class Coordinate {
     private final Point point;
-
     private State state;
     private ShipType shipType;
 

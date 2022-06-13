@@ -1,6 +1,9 @@
 package com.evansitzes;
 
 import com.evansitzes.exception.TranslationException;
+import com.evansitzes.logic.ComputerController;
+import com.evansitzes.logic.MoveHelper;
+import com.evansitzes.logic.SetupController;
 import com.evansitzes.model.Board;
 import com.evansitzes.model.Point;
 import com.evansitzes.model.Ship;
@@ -18,15 +21,15 @@ public class Game {
     public void start() {
 
         System.out.println("Setting up game board");
-        final Map<ShipType, Ship> playerShips = SetupHelper.createShips();
-        SetupHelper.placePieces(playerBoard, playerShips);
+        final Map<ShipType, Ship> playerShips = SetupController.createShips();
+        SetupController.placePieces(playerBoard, playerShips);
 
-        final Map<ShipType, Ship> computerShips = SetupHelper.createShips();
-        SetupHelper.placePieces(computerBoard, computerShips);
+        final Map<ShipType, Ship> computerShips = SetupController.createShips();
+        SetupController.placePieces(computerBoard, computerShips);
 
         final ComputerController computerController = new ComputerController(playerBoard);
 
-        System.out.println("Setup complete. Starting game");
+        System.out.println("Setup complete. Starting Battleship game");
         boolean gameOver = false;
         final Scanner scanner = new Scanner(System.in);
 
@@ -43,15 +46,15 @@ public class Game {
                     System.out.println("Enter in coordinates to fire on (e.g. 'D3').");
                     final String attackCoordinates = scanner.nextLine();
 
-                    final Point coordinate;
+                    final Point point;
                     try {
-                        coordinate = MoveHelper.translateCoordinates(attackCoordinates);
+                        point = MoveHelper.translateCoordinates(attackCoordinates);
                     } catch (final TranslationException e) {
                         System.out.println(e.getMessage());
                         continue;
                     }
 
-                    MoveHelper.processAttack(coordinate, computerBoard, playerViewScreen, computerShips);
+                    MoveHelper.processAttack(point, computerBoard, playerViewScreen, computerShips);
 
                     final boolean sunkAllComputerShips = checkForGameEnd(computerShips);
 

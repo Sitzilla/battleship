@@ -1,4 +1,4 @@
-import com.evansitzes.MoveHelper;
+import com.evansitzes.logic.MoveHelper;
 import com.evansitzes.exception.TranslationException;
 import com.evansitzes.model.Point;
 import org.junit.jupiter.api.Assertions;

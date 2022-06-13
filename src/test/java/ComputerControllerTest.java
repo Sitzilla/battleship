@@ -1,5 +1,5 @@
-import com.evansitzes.ComputerController;
-import com.evansitzes.SetupHelper;
+import com.evansitzes.logic.ComputerController;
+import com.evansitzes.logic.SetupController;
 import com.evansitzes.model.Board;
 import com.evansitzes.model.Coordinate;
 import com.evansitzes.model.Coordinate.State;
@@ -31,7 +31,7 @@ public class ComputerControllerTest {
         // mock out board
         final Point point = new Point(3, 7);
         final Board playerBoard = new Board();
-        final Map<ShipType, Ship> playerShips = SetupHelper.createShips();
+        final Map<ShipType, Ship> playerShips = SetupController.createShips();
 
         playerBoard.getGrid()[point.y][point.x].setState(Coordinate.State.OCCUPIED);
         playerBoard.getGrid()[point.y][point.x].setShipType(ShipType.BATTLESHIP);

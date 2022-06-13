@@ -1,4 +1,4 @@
-package com.evansitzes;
+package com.evansitzes.logic;
 
 import com.evansitzes.model.Board;
 import com.evansitzes.model.Coordinate;
@@ -10,7 +10,7 @@ import java.util.*;
 
 import static com.evansitzes.model.Ship.ShipType.*;
 
-public class SetupHelper {
+public class SetupController {
     private static final Random RANDOM = new Random();
 
     /**
