@@ -1,8 +1,10 @@
-import exception.TranslationException;
-import model.Board;
-import model.Point;
-import model.Ship;
-import model.Ship.ShipType;
+package com.evansitzes;
+
+import com.evansitzes.exception.TranslationException;
+import com.evansitzes.model.Board;
+import com.evansitzes.model.Point;
+import com.evansitzes.model.Ship;
+import com.evansitzes.model.Ship.ShipType;
 
 import java.util.Map;
 import java.util.Scanner;
@@ -53,7 +55,6 @@ public class Game {
                     if (sunkAllComputerShips) {
                         System.out.println("Congrats you win!");
                         gameOver = true;
-                        continue;
                     }
 
                     computerController.processComputerAttack(playerBoard, playerShips);
@@ -91,7 +92,6 @@ public class Game {
                     System.out.println("Invalid selection. Please enter a number 1 - 4");
             }
         }
-
     }
 
     private static boolean checkForGameEnd(final Map<ShipType, Ship> ships) {

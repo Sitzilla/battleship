@@ -1,13 +1,14 @@
-import exception.TranslationException;
-import model.Board;
-import model.Coordinate;
-import model.Point;
-import model.Ship;
-import model.Ship.ShipType;
+package com.evansitzes;
+
+import com.evansitzes.exception.TranslationException;
+import com.evansitzes.model.Board;
+import com.evansitzes.model.Coordinate;
+import com.evansitzes.model.Coordinate.State;
+import com.evansitzes.model.Point;
+import com.evansitzes.model.Ship;
+import com.evansitzes.model.Ship.ShipType;
 
 import java.util.Map;
-
-import static model.Coordinate.State.*;
 
 public class MoveHelper {
 
@@ -59,17 +60,17 @@ public class MoveHelper {
     public static void processAttack(final Point target, final Board computerBoard, final Board playerViewScreen, final Map<ShipType, Ship> computerShips) {
         final Coordinate coordinate = computerBoard.getGrid()[target.y][target.x];
 
-        if (coordinate.getState() == EMPTY) {
+        if (coordinate.getState() == State.EMPTY) {
             System.out.println("Miss");
-            coordinate.setState(MISS);
+            coordinate.setState(State.MISS);
 
             playerViewScreen.getGrid()[target.y][target.x].setState(coordinate.getState());
             return;
         }
 
-        if (coordinate.getState() == OCCUPIED) {
+        if (coordinate.getState() == State.OCCUPIED) {
             System.out.println("Hit!!");
-            coordinate.setState(HIT);
+            coordinate.setState(State.HIT);
 
             final Ship ship = computerShips.get(coordinate.getShipType());
             ship.processHit();

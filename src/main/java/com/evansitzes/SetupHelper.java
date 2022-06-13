@@ -1,12 +1,14 @@
-import model.Board;
-import model.Coordinate;
-import model.Coordinate.State;
-import model.Ship;
-import model.Ship.ShipType;
+package com.evansitzes;
+
+import com.evansitzes.model.Board;
+import com.evansitzes.model.Coordinate;
+import com.evansitzes.model.Coordinate.State;
+import com.evansitzes.model.Ship;
+import com.evansitzes.model.Ship.ShipType;
 
 import java.util.*;
 
-import static model.Ship.ShipType.*;
+import static com.evansitzes.model.Ship.ShipType.*;
 
 public class SetupHelper {
     private static final Random RANDOM = new Random();

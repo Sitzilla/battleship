@@ -1,8 +1,8 @@
-package model;
+package com.evansitzes.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import model.Ship.ShipType;
+import com.evansitzes.model.Ship.ShipType;
 
 @Data
 @AllArgsConstructor

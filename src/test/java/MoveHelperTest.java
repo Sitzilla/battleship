@@ -1,5 +1,6 @@
-import exception.TranslationException;
-import model.Point;
+import com.evansitzes.MoveHelper;
+import com.evansitzes.exception.TranslationException;
+import com.evansitzes.model.Point;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

@@ -1,15 +1,17 @@
-import model.Board;
-import model.Coordinate;
-import model.Coordinate.State;
-import model.Point;
-import model.Ship;
-import model.Ship.ShipType;
+package com.evansitzes;
+
+import com.evansitzes.model.Board;
+import com.evansitzes.model.Coordinate;
+import com.evansitzes.model.Coordinate.State;
+import com.evansitzes.model.Point;
+import com.evansitzes.model.Ship;
+import com.evansitzes.model.Ship.ShipType;
 
 import java.util.*;
 
 public class ComputerController {
 
-    private final Deque<Point> moves = new ArrayDeque<>();
+    private Deque<Point> moves = new ArrayDeque<>();
 
     public ComputerController(final Board playerBoard) {
         final List<Point> possibleMoves = new ArrayList<>();
@@ -29,6 +31,7 @@ public class ComputerController {
         final Point nextMove = moves.pop();
 
         final Coordinate coordinate = playerBoard.getGrid()[nextMove.y][nextMove.x];
+        System.out.println("Computer fire at x: " + nextMove.x + ", y: " + nextMove.y);
 
         if (coordinate.getState() == State.OCCUPIED) {
             final Ship ship = playerShips.get(coordinate.getShipType());
@@ -45,5 +48,13 @@ public class ComputerController {
             System.out.println("Computer misses");
             coordinate.setState(State.MISS);
         }
+    }
+
+    public Deque<Point> getMoves() {
+        return moves;
+    }
+
+    public void setMoves(final Deque<Point> moves) {
+        this.moves = moves;
     }
 }

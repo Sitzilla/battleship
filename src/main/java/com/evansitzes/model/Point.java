@@ -1,4 +1,4 @@
-package model;
+package com.evansitzes.model;
 
 import lombok.AllArgsConstructor;
 

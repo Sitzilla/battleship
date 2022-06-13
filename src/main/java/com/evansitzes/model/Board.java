@@ -1,5 +1,6 @@
-package model;
+package com.evansitzes.model;
 
+import com.evansitzes.model.Coordinate.State;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,7 +18,7 @@ public class Board {
 
         for (int i = 0; i < WIDTH; i++) {
             for (int j = 0; j < HEIGHT; j++) {
-                grid[i][j] = new Coordinate(new Point(i, j), Coordinate.State.EMPTY, null);
+                grid[i][j] = new Coordinate(new Point(i, j), State.EMPTY, null);
             }
         }
     }
@@ -42,13 +43,13 @@ public class Board {
 
             System.out.printf("%2d ", i + 1);
             for (int j = 0; j < HEIGHT; j++) {
-                if (grid[i][j].getState() == Coordinate.State.OCCUPIED) {
+                if (grid[i][j].getState() == State.OCCUPIED) {
                     System.out.printf("%2c ", 'O');
-                } else if (grid[i][j].getState() == Coordinate.State.EMPTY) {
+                } else if (grid[i][j].getState() == State.EMPTY) {
                     System.out.printf("%2c ", ' ');
-                } else if (grid[i][j].getState() == Coordinate.State.HIT) {
+                } else if (grid[i][j].getState() == State.HIT) {
                     System.out.printf("%2c ", 'X');
-                } else if (grid[i][j].getState() == Coordinate.State.MISS) {
+                } else if (grid[i][j].getState() == State.MISS) {
                     System.out.printf("%2c ", '-');
                 }
             }
