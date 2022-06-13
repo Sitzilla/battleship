@@ -31,6 +31,9 @@ public class Game {
         final Scanner scanner = new Scanner(System.in);
 
         while (!gameOver) {
+            System.out.println();
+            System.out.println("==================================================");
+            System.out.println();
             System.out.println("Please enter a number: \n (1) choose attack \n (2) print your board \n (3) print your moves  \n (4) end game");
 
             final String command = scanner.nextLine();
